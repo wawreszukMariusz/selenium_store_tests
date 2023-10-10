@@ -9,10 +9,8 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class NavigationPage {
+
     WebDriver driver;
-    public NavigationPage(WebDriver driver){
-        PageFactory.initElements(driver, this);
-    }
 
     @FindBy(xpath = "//a[@href='http://opencart.abstracta.us:80/index.php?route=common/home']")
     private WebElement homePageLink;
@@ -31,6 +29,44 @@ public class NavigationPage {
 
     @FindBy(xpath = "//ul[@class='nav navbar-nav']//a")
     private List<WebElement> navDropDownElementsList;
+
+    @FindBy(xpath = "//i[@class='fa fa-phone']/..")
+    private WebElement contactLink;
+
+    @FindBy(xpath = "//i[@class='fa fa-user']/..")
+    private WebElement myAccountDropDown;
+
+    @FindBy(xpath = "//a[text()='Register']")
+    private WebElement myAccountDropDownRegister;
+
+    @FindBy(xpath = "//a[text()='Login']")
+    private WebElement myAccountDropDownLogin;
+
+    @FindBy(id = "wishlist-total")
+    private WebElement wishlistLink;
+
+    @FindBy(css = "title = 'Shopping Cart'")
+    private WebElement shoppingCartLink;
+
+    @FindBy(css = "title = 'Checkout'")
+    private WebElement checkoutLink;
+
+    @FindBy(xpath = "//div[@class='btn-group']/button")
+    private WebElement currencyButton;
+
+    @FindBy(name = "EUR")
+    private WebElement currencyEurButton;
+
+    @FindBy(name = "GBP")
+    private WebElement currencyGbpButton;
+
+    @FindBy(name = "USD")
+    private WebElement currencyUsdButton;
+
+    public NavigationPage(WebDriver driver){
+        PageFactory.initElements(driver, this);
+        this.driver = driver;
+    }
 
     public void clickHomePageLink(){
         homePageLink.click();
@@ -63,10 +99,53 @@ public class NavigationPage {
     public WebElement getDropDownNavElement(String dropDownNavElement){
         for(int i = 0; i<getNumberOfNavElements(); i++){
             if(dropDownNavElement.equals(navDropDownElementsList.get(i).getText())){
-                return navElementsList.get(i);
+                return navDropDownElementsList.get(i);
             }
         }
         return null;
     }
 
+    public void clickContactLink(){
+        contactLink.click();
+    }
+
+    public void clickMyAccountDropDown(){
+        myAccountDropDown.click();
+    }
+
+    public void clickMyAccountDropDownRegister(){
+        myAccountDropDownRegister.click();
+    }
+
+    public void clickMyAccountDropDownLogin(){
+        myAccountDropDownLogin.click();
+    }
+
+    public void clickWishListLink(){
+        wishlistLink.click();
+    }
+
+    public void clickShoppingCartLink(){
+        shoppingCartLink.click();
+    }
+
+    public void clickCheckoutLink(){
+        checkoutLink.click();
+    }
+
+    public void clickCurrencyButton(){
+        currencyButton.click();
+    }
+
+    public void clickCurrencyEurButton(){
+        currencyEurButton.click();
+    }
+
+    public void clickCurrencyGBPButton(){
+        currencyGbpButton.click();
+    }
+
+    public void clickCurrencyUsdButton(){
+        currencyUsdButton.click();
+    }
 }
