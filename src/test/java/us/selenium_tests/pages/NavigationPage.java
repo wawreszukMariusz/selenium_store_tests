@@ -10,8 +10,6 @@ import java.util.List;
 
 public class NavigationPage {
 
-    WebDriver driver;
-
     @FindBy(xpath = "//a[@href='http://opencart.abstracta.us:80/index.php?route=common/home']")
     private WebElement homePageLink;
 
@@ -65,7 +63,6 @@ public class NavigationPage {
 
     public NavigationPage(WebDriver driver){
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
 
     public void clickHomePageLink(){
@@ -103,6 +100,14 @@ public class NavigationPage {
             }
         }
         return null;
+    }
+
+    public void clickNavElement(String navElement){
+        getNavElement(navElement).click();
+    }
+
+    public void clickDropDownNavElement(String dropDownNavElement){
+        getDropDownNavElement(dropDownNavElement).click();
     }
 
     public void clickContactLink(){
