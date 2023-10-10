@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class NavigationPage {
     @FindBy(xpath = "//ul[@class='nav navbar-nav']/li")
     private List<WebElement> navElementsList;
 
-    @FindBy(xpath = "//ul[@class='nav navbar-nav']//a")
+    @FindBy(xpath = "//div[@class='collapse navbar-collapse navbar-ex1-collapse']//a")
     private List<WebElement> navDropDownElementsList;
 
     @FindBy(xpath = "//i[@class='fa fa-phone']/..")
@@ -61,6 +62,9 @@ public class NavigationPage {
     @FindBy(name = "USD")
     private WebElement currencyUsdButton;
 
+    @FindBy(xpath = "//a[text()='MP3 Players']/..//li/a")
+    private List<WebElement> mp3PlayersElements;
+
     public NavigationPage(WebDriver driver){
         PageFactory.initElements(driver, this);
     }
@@ -85,6 +89,10 @@ public class NavigationPage {
         return navElementsList.size();
     }
 
+    public int getNumberOfDropDownNavElements(){
+        return navDropDownElementsList.size();
+    }
+
     public WebElement getNavElement(String navElement){
         for(int i = 0; i<getNumberOfNavElements(); i++){
             if(navElement.equals(navElementsList.get(i).getText())){
@@ -94,7 +102,7 @@ public class NavigationPage {
         return null;
     }
     public WebElement getDropDownNavElement(String dropDownNavElement){
-        for(int i = 0; i<getNumberOfNavElements(); i++){
+        for(int i = 0; i<getNumberOfDropDownNavElements(); i++){
             if(dropDownNavElement.equals(navDropDownElementsList.get(i).getText())){
                 return navDropDownElementsList.get(i);
             }
@@ -108,6 +116,16 @@ public class NavigationPage {
 
     public void clickDropDownNavElement(String dropDownNavElement){
         getDropDownNavElement(dropDownNavElement).click();
+    }
+
+    public void checkMp3PlayersDropDownElements(WebDriver driver){
+        ProductsPage productsPage = new ProductsPage(driver);
+        for(int i=0; i<mp3PlayersElements.size(); i++){
+            clickNavElement("MP3 Players");
+            mp3PlayersElements.get(i).click();
+            //Assert.assertEquals(productsPage.getProductCategoryHeadingText(), (mp3PlayersElements.get(i).getText()));
+            Assert.assertTrue(productsPage.checkVisibilityOfContinueButton());
+        }
     }
 
     public void clickContactLink(){
