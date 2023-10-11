@@ -85,6 +85,8 @@ public class NavigationPage {
         shoppingCartButton.click();
     }
 
+    public String getShoppingCartButtonText(){ return shoppingCartButton.getText(); }
+
     public int getNumberOfNavElements(){
         return navElementsList.size();
     }
@@ -164,7 +166,7 @@ public class NavigationPage {
         currencyEurButton.click();
     }
 
-    public void clickCurrencyGBPButton(){
+    public void clickCurrencyGbpButton(){
         currencyGbpButton.click();
     }
 

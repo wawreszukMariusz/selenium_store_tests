@@ -16,9 +16,14 @@ public class ProductsPage {
     @FindBy(xpath = "//div[@class='product-thumb']")
     private List<WebElement> productBoxesList;
 
+    @FindBy(xpath = "//p[@class='price']")
+    private List<WebElement> productBoxesPricesList;
+
+    @FindBy(xpath = "//span[@class='price-tax']")
+    private List<WebElement> productBoxesTaxPricesList;
+
     @FindBy(className = "pull-right")
     private WebElement continueButton;
-
 
 
 
@@ -38,7 +43,25 @@ public class ProductsPage {
         if(getNumberOfProductBoxes() == 0){
             return continueButton.isDisplayed();
         }
-            return true;
+        return true;
+    }
+
+    public boolean checkProductBoxesPriceCurrency(String currency){
+        for(int i=0; i<productBoxesPricesList.size(); i++){
+            if(!productBoxesPricesList.get(i).getText().contains(currency)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean checkProductBoxesTaxPricesCurrency(String currency){
+        for(int i=0; i<productBoxesTaxPricesList.size(); i++){
+            if(!productBoxesTaxPricesList.get(i).getText().contains(currency)){
+                return false;
+            }
+        }
+        return true;
     }
 
     public void clickContinueButton(){
