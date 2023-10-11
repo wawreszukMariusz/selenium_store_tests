@@ -1,10 +1,9 @@
-package us.selenium_tests.tests;
+package pl.selenium_store_tests.tests;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import us.selenium_tests.utils.DriverFactory;
+import pl.selenium_store_tests.utils.DriverFactory;
 
 public class BaseTest {
     protected WebDriver driver;

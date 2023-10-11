@@ -1,14 +1,9 @@
-package us.selenium_tests.tests;
+package pl.selenium_store_tests.tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import us.selenium_tests.pages.NavigationPage;
-import us.selenium_tests.pages.ProductsPage;
-
-import java.time.Duration;
+import pl.selenium_store_tests.pages.NavigationPage;
+import pl.selenium_store_tests.pages.ProductsPage;
 
 
 public class NavigationTest extends BaseTest{

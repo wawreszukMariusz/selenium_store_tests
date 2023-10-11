@@ -1,10 +1,9 @@
-package us.selenium_tests.tests;
+package pl.selenium_store_tests.tests;
 
-import org.checkerframework.checker.units.qual.N;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import us.selenium_tests.pages.NavigationPage;
-import us.selenium_tests.pages.ProductsPage;
+import pl.selenium_store_tests.pages.NavigationPage;
+import pl.selenium_store_tests.pages.ProductsPage;
 
 public class SearchTest extends BaseTest {
 

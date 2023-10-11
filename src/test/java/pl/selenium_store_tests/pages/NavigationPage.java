@@ -1,6 +1,5 @@
-package us.selenium_tests.pages;
+package pl.selenium_store_tests.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
