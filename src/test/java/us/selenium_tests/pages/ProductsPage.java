@@ -25,7 +25,11 @@ public class ProductsPage {
     @FindBy(className = "pull-right")
     private WebElement continueButton;
 
+    @FindBy(xpath = "//div[@id='content']//h1")
+    private WebElement searchResultHeading;
 
+    @FindBy(xpath = "//div/p[text()='Your shopping cart is empty!']")
+    private WebElement searchNoResultHeading;
 
     public ProductsPage(WebDriver driver){
         PageFactory.initElements(driver, this);
@@ -37,6 +41,13 @@ public class ProductsPage {
 
     public int getNumberOfProductBoxes(){
         return productBoxesList.size();
+    }
+
+    public boolean checkIfAnyProductBoxesExist() {
+        if(productBoxesList.size()>0){
+            return true;
+        }
+        return false;
     }
 
     public boolean checkVisibilityOfContinueButton(){
@@ -66,6 +77,14 @@ public class ProductsPage {
 
     public void clickContinueButton(){
         continueButton.click();
+    }
+
+    public String getSearchResultHeading(){
+        return searchResultHeading.getText();
+    }
+
+    public String getSearchNoResultHeading(){
+        return searchNoResultHeading.getText();
     }
 }
 
