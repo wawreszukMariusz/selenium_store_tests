@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="StoreTests">
+    <test name="CurrencyTest" thread-count="3" parallel="methods">
+        <classes>
+            <class name="pl.selenium_store_tests.tests.CurrencyTest"></class>
+        </classes>
+    </test>
+
+    <test name="NavigationTest" thread-count="9" parallel="methods">
+        <classes>
+            <class name="pl.selenium_store_tests.tests.NavigationTest"></class>
+        </classes>
+    </test>
+
+    <test name="SearchTest" thread-count="2" parallel="methods">
+        <classes>
+            <class name="pl.selenium_store_tests.tests.SearchTest"></class>
+        </classes>
+    </test>
+</suite>

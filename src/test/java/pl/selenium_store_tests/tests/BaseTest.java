@@ -5,11 +5,13 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pl.selenium_store_tests.utils.DriverFactory;
 
+import java.io.IOException;
+
 public class BaseTest {
     protected WebDriver driver;
     @BeforeMethod
-    public void setUpTest(){
-        driver = DriverFactory.getDriver("firefox");
+    public void setUpTest() throws IOException {
+        driver = DriverFactory.getDriver();
         driver.manage().window().maximize();
         driver.get("https://opencart.abstracta.us/index.php?route=common/home");
     }

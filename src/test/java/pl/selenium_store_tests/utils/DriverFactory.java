@@ -6,8 +6,13 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
+import java.io.IOException;
+import java.util.Properties;
+
 public class DriverFactory {
-    public static WebDriver getDriver(String name){
+    public static WebDriver getDriver() throws IOException {
+        String name = PropertiesLoader.loadProperty("browser.name");
+
         if(name.equals("firefox")) {
             return new FirefoxDriver();
         }

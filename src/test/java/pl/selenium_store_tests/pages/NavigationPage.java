@@ -1,5 +1,7 @@
 package pl.selenium_store_tests.pages;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -64,6 +66,7 @@ public class NavigationPage {
     @FindBy(xpath = "//a[text()='MP3 Players']/..//li/a")
     private List<WebElement> mp3PlayersElements;
 
+    private static final Logger logger = LogManager.getLogger();
     public NavigationPage(WebDriver driver){
         PageFactory.initElements(driver, this);
     }
@@ -77,7 +80,10 @@ public class NavigationPage {
     }
 
     public void clickSearchButton(){
+        //Added for test
+        logger.info("Clicking search button");
         searchButton.click();
+        logger.info("Button has been clicked");
     }
 
     public void clickShoppingCartButton(){
