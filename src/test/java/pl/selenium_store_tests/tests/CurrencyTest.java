@@ -14,14 +14,14 @@ public class CurrencyTest extends BaseTest {
 
     @Test
     public void euroCurrencyTest() throws IOException {
-        ExtentTest test = extentReports.createTest("Euro Currency Test");
+        ExtentTest test = extentReports.createTest("EURO currency Test");
 
         NavigationPage navigationPage = new NavigationPage(driver);
 
         navigationPage.clickCurrencyButton();
-        test.log(Status.PASS, "Click currency button done", SeleniumHelper.getScreenshot(driver));
+        test.log(Status.PASS, "Clicking currency button done", SeleniumHelper.getScreenshot(driver));
         navigationPage.clickCurrencyEurButton();
-        test.log(Status.PASS, "Click currency euro button done", SeleniumHelper.getScreenshot(driver));
+        test.log(Status.PASS, "Clicking currency euro button done", SeleniumHelper.getScreenshot(driver));
 
         String currency = "€";
 
@@ -38,11 +38,14 @@ public class CurrencyTest extends BaseTest {
         test.log(Status.PASS, "Asserts passed", SeleniumHelper.getScreenshot(driver));
     }
     @Test
-    public void gbpCurrencyTest(){
+    public void gbpCurrencyTest() throws IOException {
+        ExtentTest test = extentReports.createTest("GBP currency test");
         NavigationPage navigationPage = new NavigationPage(driver);
 
         navigationPage.clickCurrencyButton();
+        test.log(Status.PASS, "Clicking currency button done", SeleniumHelper.getScreenshot(driver));
         navigationPage.clickCurrencyGbpButton();
+        test.log(Status.PASS, "Clicking gbp button done", SeleniumHelper.getScreenshot(driver));
 
         String currency = "£";
 
@@ -55,13 +58,17 @@ public class CurrencyTest extends BaseTest {
         navigationPage.clickNavElement("Tablets");
         Assert.assertTrue(productsPage.checkProductBoxesPriceCurrency(currency));
         Assert.assertTrue(productsPage.checkProductBoxesTaxPricesCurrency(currency));
+        test.log(Status.PASS, "Asserts passed", SeleniumHelper.getScreenshot(driver));
     }
     @Test
-    public void usdCurrencyTest(){
+    public void usdCurrencyTest() throws IOException {
+        ExtentTest test = extentReports.createTest("USD currency test");
         NavigationPage navigationPage = new NavigationPage(driver);
 
         navigationPage.clickCurrencyButton();
+        test.log(Status.PASS, "Clicking currency button done", SeleniumHelper.getScreenshot(driver));
         navigationPage.clickCurrencyUsdButton();
+        test.log(Status.PASS, "Clicking usd button done", SeleniumHelper.getScreenshot(driver));
 
         String currency = "$";
 
@@ -74,5 +81,6 @@ public class CurrencyTest extends BaseTest {
         navigationPage.clickNavElement("Tablets");
         Assert.assertTrue(productsPage.checkProductBoxesPriceCurrency(currency));
         Assert.assertTrue(productsPage.checkProductBoxesTaxPricesCurrency(currency));
+        test.log(Status.PASS, "Asserts passed", SeleniumHelper.getScreenshot(driver));
     }
 }

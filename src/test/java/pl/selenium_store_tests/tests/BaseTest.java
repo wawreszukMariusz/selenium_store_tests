@@ -10,14 +10,15 @@ import org.testng.annotations.BeforeSuite;
 import pl.selenium_store_tests.utils.DriverFactory;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class BaseTest {
     protected WebDriver driver;
     protected static ExtentHtmlReporter htmlReporter;
     protected static ExtentReports extentReports;
     @BeforeSuite
-    public void beforeSuite(){
-        htmlReporter = new ExtentHtmlReporter("index.html");
+    public void beforeSuite() {
+        htmlReporter = new ExtentHtmlReporter("report_"+ LocalDate.now()+".html");
         extentReports =new ExtentReports();
         extentReports.attachReporter(htmlReporter);
     }
@@ -37,7 +38,7 @@ public class BaseTest {
 
     @AfterMethod
     public void tearDown(){
-       // driver.quit();
+        driver.quit();
     }
 
 }
